@@ -20,17 +20,17 @@ public class User implements Serializable {
     @Id
     @GeneratedValue
     private Long id;
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false, unique = false)
     private String userName;
     @Column(nullable = false)
     private String passWord;
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false, unique = false)
     private String email;
-    @Column(nullable = true, unique = true)
+    @Column(nullable = true, unique = false)
     private String nickName;
     @Column(nullable = false)
     private String regTime;
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false, unique = false)
     private int age;
 
     public User(String userName, String email, String nickName, String passWord, String regTime,int age) {
