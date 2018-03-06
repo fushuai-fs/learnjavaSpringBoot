@@ -18,6 +18,12 @@ public interface UserMapper {
         return null;
     }
     @SelectProvider(type = UserSql.class, method = "getList")
+    @Results({
+            @Result(property = "nickName", column = "nick_name"),
+            @Result(property = "userName", column = "user_name"),
+            @Result(property = "passWord", column = "pass_word"),
+            @Result(property = "regTime", column = "reg_time")
+    })
     List<User> getList(userParam userParam);
 
     @SelectProvider(type = UserSql.class, method = "getCount")

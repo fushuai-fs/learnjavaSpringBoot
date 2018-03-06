@@ -11,14 +11,14 @@ public class UserSql {
     private static final Logger log = LoggerFactory.getLogger(UserSql.class);
 
     public String getList(userParam userParam) {
-        StringBuffer sql = new StringBuffer("select id, userName, passWord, user_sex as userSex, nick_name as nickName");
+        StringBuffer sql = new StringBuffer("select * ");
         sql.append(" from user where 1=1 ");
         if (userParam != null) {
             if (StringUtils.isNotBlank(userParam.getUserName())) {
-                sql.append(" and userName = #{userName}");
+                sql.append(" and user_name = #{userName}");
             }
             if (StringUtils.isNotBlank(userParam.getUserSex())) {
-                sql.append(" and userSex = #{userSex}");
+
             }
         }
         sql.append(" order by id desc");
