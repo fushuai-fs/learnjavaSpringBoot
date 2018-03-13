@@ -35,9 +35,9 @@ public class restTemplateTest {
  * */
     @Test
     public void test(){
-        RestTemplate restTemplate = new RestTemplate();
-        Object object = restTemplate.postForObject("http://172.16.2.162:801/api/App/hotel","",Object.class);
-
-        System.out.println(object);
+//        RestTemplate restTemplate = new RestTemplate();
+//        Object object = restTemplate.postForObject("http://172.16.2.162:801/api/App/hotel","",Object.class);
+//
+//        System.out.println(object);
     }
 }

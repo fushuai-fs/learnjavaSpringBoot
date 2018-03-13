@@ -7,8 +7,6 @@
 	<artifactId>demo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
-    <!--发布到tomcat服务器-->
-	<!--<packaging>war</packaging>-->
 
 	<name>demo</name>
 	<description>Demo project for Spring Boot</description>
