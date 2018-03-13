@@ -31,23 +31,18 @@ public class WeChatController {
         // 返回session
         Map<String,Object> result = new HashMap<>();
 
-        String url ="https://api.weixin.qq.com/sns/jscode2session";
-        String param ="appid={APPID}&secret={SECRET}&js_code={JSCODE}&grant_type=authorization_code";
-        url=url+"?"+param;
+        String url ="https://api.weixin.qq.com/sns/jscode2session?appid={APPID}&secret={SECRET}&js_code={JSCODE}&grant_type=authorization_code";
+
         Map<String,Object> map = new HashMap<>();
         map.put("APPID",APPID);
         map.put("SECRET",SECRET);
         map.put("JSCODE",code);
-        param= param.replace("{APPID}",APPID);
-        param= param.replace("{SECRET}",SECRET);
-        param= param.replace("{JSCODE}",code);
+
         WeChatCertEntity weChat =null;
         try {
-//            Object object = restTemplate.getForObject(url,WeChatCertEntity.class,map);
-//            System.out.println(object);
+            // 添加text/plan转换实体类型才可以  或者 接收字符串转换
             ResponseEntity<WeChatCertEntity> rs = restTemplate.getForEntity(url,WeChatCertEntity.class,map);
             weChat =rs.getBody();
-//              weChat = restTemplate.postForEntity(url,map,WeChatCertEntity.class).getBody();
             result.put("msg","success");
         }catch (Exception e){
             System.out.println(e.toString());
