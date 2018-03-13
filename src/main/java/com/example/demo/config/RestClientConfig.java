@@ -28,7 +28,7 @@ public class RestClientConfig {
 //        restTemplate.setErrorHandler();// 自定义异常
 
         RestTemplate restTemplate = new RestTemplate(httpRequestFactory());
-
+        restTemplate.getMessageConverters().add(new WxMappingJackson2HttpMessageConverter());
         return  restTemplate;
     }
 

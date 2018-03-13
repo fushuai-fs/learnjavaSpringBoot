@@ -1,5 +1,7 @@
 package com.example.demo.domain;
 
+import javax.persistence.Entity;
+
 /*
 * //正常返回的JSON数据包
 {
@@ -13,6 +15,7 @@ package com.example.demo.domain;
     "errmsg": "invalid code"
 }
 */
+
 public class WeChatCertEntity {
     //用户唯一标识
     private String openid;
