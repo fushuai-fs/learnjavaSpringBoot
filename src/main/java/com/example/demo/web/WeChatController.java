@@ -6,6 +6,8 @@ import com.sun.javafx.collections.MappingChange;
 import org.apache.commons.lang3.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.context.properties.ConfigurationPropertiesBinding;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,8 +25,12 @@ public class WeChatController {
     @Autowired
     private RedisUtil redisUtil;
 
-    private String APPID="wx313f3b8003e20d3e";
-    private String SECRET="1ca6fc9cc0258df557c0ea0aa0635f6f";
+    /** 使用@value注解，从配置文件读取值 */
+    @Value("${wx.appid}")
+    private String APPID="";
+
+    @Value("${wx.secret}")
+    private String SECRET="";
     @RequestMapping("/login")
     public Object OnLogin(String code){
 
