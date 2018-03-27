@@ -11,9 +11,9 @@ import java.util.List;
 
 @Controller
 public class indexController {
-    @RequestMapping("/")
+    @RequestMapping("/example")
     public String index(ModelMap map) {
-        map.addAttribute("message", "http://www.idonotknow.com");
+        map.addAttribute("message", "http://www..com");
         return "example";
     }
     @RequestMapping("/index")
@@ -28,6 +28,11 @@ public class indexController {
     @RequestMapping("/home")
     public String home() {
         return "home";
+    }
+
+    @RequestMapping("/layoutHeader")
+    public String layoutHeader(){
+        return "layout/header";
     }
 
 }

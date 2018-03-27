@@ -15,6 +15,7 @@ public class MyFilter implements Filter {
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         System.out.println("this is MyFilter,url :"+request.getRequestURI());
+
         filterChain.doFilter(servletRequest, servletResponse);
     }
 
