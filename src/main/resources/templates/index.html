@@ -1,11 +1,64 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
-    <title>index</title>
+    <title>XXX后台管理系统</title>
+    <link rel="stylesheet" href="/css/bootstrap.css"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
 </head>
 <body>
-    <div th:include="layout/copyright :: copyright"></div>
-    <div th:replace="layout/copyright :: copyright"></div>
+<!--导航-->
+<div class="navbar navbar-inverse navbar-static-top">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse"
+                data-target="#example-navbar-collapse">
+            <span class="sr-only"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">XXX后台管理系统</a>
+    </div>
+    <div class="collapse navbar-collapse" id="example-navbar-collapse">
+        <ul id="navigation" class="nav navbar-nav">
+            <li th:class="${menu.ID}==1?'active':''" th:each="menu:${menus}">
+                <!--th:href="@{'/siderBar?ID='+${menu.ID}}"-->
+                <a href="#"  th:attr="data-id=${menu.ID},data-parentID=${menu.ParentID}">
+                    <span class="label label-success"><i th:class="${menu.iconName}"></i></span>
+                    <span style="white-space:nowrap;" th:text="${menu.menuName}"></span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+<!--导航-->
+<!--side-->
+<div style=" margin-left: 0px; padding-left: 0px; margin-right: 0px; padding-right: 0px;">
+    <div class="siderbar" style="width: 200px; float: left;background-color: red">
+        <ul class="list-group">
+            <li class="list-group-item">免费域名注册</li>
+            <li class="list-group-item">免费 Window 空间托管</li>
+            <li class="list-group-item">图像的数量</li>
+            <li class="list-group-item">
+                <span class="badge"></span>
+                24*7 支持
+            </li>
+            <li class="list-group-item">每年更新成本</li>
+            <li class="list-group-item">
+                <span class="badge">新</span>
+                折扣优惠
+            </li>
+        </ul>
+
+    </div>
+    <div class="content" style=" float: left;">我是内容</div>
+    <div class="clearfix"></div>
+</div>
+<!--side-->
+<!--footer-->
+<div th:include="layout/copyright :: copyright" style="margin:0px auto;text-align: center;"></div>
+<!--footer-->
 </body>
+<script src="/js/jquery-3.3.1.js"></script>
+<script src="/js/bootstrap.js"></script>
 </html>
