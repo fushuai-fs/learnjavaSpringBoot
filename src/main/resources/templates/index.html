@@ -105,7 +105,7 @@
                 var lihtml = '';
                 $.each(data, function (index, menu) {
 //                     alert(JSON.stringify(menu));
-                    lihtml = lihtml + '<li class="list-group-item"><a href="javascript:void(0);" data-addtab="setting" data-url="'+menu.pageUrl+'" data-title="'+menu.menuName+'" data-id= "' + menu.ID + '" data-parentID="' + menu.ParentID + '">' +
+                    lihtml = lihtml + '<li class="list-group-item"><a href="javascript:void(0);" data-addtab="setting_'+menu.id.toString()+'" data-url="'+menu.pageUrl+'" data-title="'+menu.menuName+'" data-id= "' + menu.id + '" data-parentID="' + menu.parentID + '">' +
                         '<i class="' + menu.iconName + '"></i> ' +
                         '<span style="white-space:nowrap;"  >' + menu.menuName + '</span>' +
                         '</a>' +

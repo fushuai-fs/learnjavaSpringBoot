@@ -28,10 +28,10 @@ public class IndexController {
         System.out.println(ID);
         List<Menu> listMenu = new ArrayList<>();
         Menu menu = new Menu();
-        menu.setID(1);menu.setIconName("glyphicon glyphicon-inbox");menu.setMenuName("系统管理");menu.setParentID(0);menu.setMenuType(1);menu.setPageUrl("/");
+        menu.setID(1);menu.setIconName("glyphicon glyphicon-inbox");menu.setMenuName("系统管理");menu.setParentID(0);menu.setMenuType(1);menu.setPageUrl("/?1");
         listMenu.add(menu);
         menu = new Menu();
-        menu.setID(2);menu.setIconName("glyphicon glyphicon-user");menu.setMenuName("客户管理");menu.setParentID(0);menu.setMenuType(1);menu.setPageUrl("/");
+        menu.setID(2);menu.setIconName("glyphicon glyphicon-user");menu.setMenuName("客户管理");menu.setParentID(0);menu.setMenuType(1);menu.setPageUrl("/?2");
         listMenu.add(menu);
         return  listMenu;
     }
