@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8"/>
     <title>XXX后台管理系统</title>
-    <link rel="stylesheet" href="/css/bootstrap.css"/>
+    <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="/css/bootstrap.css"/>
+    <link rel="stylesheet" href="/css/bootstrap.addtabs.css"/>
 </head>
 <body>
 <!--导航-->
@@ -21,9 +22,10 @@
     </div>
     <div class="collapse navbar-collapse" id="example-navbar-collapse">
         <ul id="navigation" class="nav navbar-nav">
-            <li th:class="${menu.ID}==1?'active':''" th:each="menu:${menus}">
+            <li th:class="${menu.ID}==2?'active':''" th:each="menu:${menus}">
                 <!--th:href="@{'/siderBar?ID='+${menu.ID}}"-->
-                <a href="#"  th:attr="data-id=${menu.ID},data-parentID=${menu.ParentID}">
+                <a href="javascript:void(0);" onclick="navigator(this)"
+                   th:attr="data-id=${menu.ID},data-parentID=${menu.ParentID}">
                     <span class="label label-success"><i th:class="${menu.iconName}"></i></span>
                     <span style="white-space:nowrap;" th:text="${menu.menuName}"></span>
                 </a>
@@ -34,31 +36,94 @@
 <!--导航-->
 <!--side-->
 <div style=" margin-left: 0px; padding-left: 0px; margin-right: 0px; padding-right: 0px;">
-    <div class="siderbar" style="width: 200px; float: left;background-color: red">
-        <ul class="list-group">
-            <li class="list-group-item">免费域名注册</li>
-            <li class="list-group-item">免费 Window 空间托管</li>
-            <li class="list-group-item">图像的数量</li>
+    <div class="siderBar col-sm-2"  style="padding-right:5px; padding-left:1px;">
+        <ul id="siderBar" class="list-group">
+            <!--<li class="list-group-item">免费域名注册</li>-->
+            <!--<li class="list-group-item">免费 Window 空间托管</li>-->
+            <!--<li class="list-group-item">图像的数量</li>-->
+            <!--<li class="list-group-item">-->
+            <!--<span class="badge"></span>-->
+            <!--24*7 支持-->
+            <!--</li>-->
+            <!--<li class="list-group-item">每年更新成本</li>-->
             <li class="list-group-item">
-                <span class="badge"></span>
-                24*7 支持
-            </li>
-            <li class="list-group-item">每年更新成本</li>
-            <li class="list-group-item">
+                <span>折扣优惠</span>
                 <span class="badge">新</span>
-                折扣优惠
             </li>
         </ul>
 
     </div>
-    <div class="content" style=" float: left;">我是内容</div>
+    <div class="content col-sm-10" style=" padding-right:1px; padding-left:0px;">
+        <div id="tabs">
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active">
+                    <a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="home">I'm a homepage.</div>
+            </div>
+
+        </div>
+    </div>
     <div class="clearfix"></div>
 </div>
 <!--side-->
 <!--footer-->
-<div th:include="layout/copyright :: copyright" style="margin:0px auto;text-align: center;"></div>
+<div th:include="layout/copyright :: copyright" style="margin:0px auto;text-align: center;background-color: darkgrey;"></div>
 <!--footer-->
 </body>
 <script src="/js/jquery-3.3.1.js"></script>
 <script src="/js/bootstrap.js"></script>
+<script src="/js/bootstrap.addtabs.js"></script>
+<script type="application/javascript" language="JavaScript">
+
+    function navigator(th) {
+        if (event) {
+            event.preventDefault();
+        }
+        $(th).parent().siblings().removeClass("active");
+        $(th).parent().addClass("active");
+
+
+        $("#siderBar").children('li:first-child').children("span:first-child").text($(th).text().trim());
+        $("#siderBar").children('li:first-child').children("span:last-child").text($(th).attr("data-id"));
+        $("#siderBar").children('li:gt(0)').remove();
+
+//        $("#siderBar").html('');
+        var id = $(th).attr("data-id");
+//         alert($(th).text().trim() + $(th).attr("data-id"));
+        $.get("/siderMenuByID?ID=" + id, function (data, status) {
+//            alert("数据：" + JSON.stringify(data) + "\n状态：" + status);
+//        <li class="list-group-item">
+//                <span>折扣优惠</span>
+//                <span class="badge">新</span>
+//                </li>
+            if (status == "success") {
+                var lihtml = '';
+                $.each(data, function (index, menu) {
+//                    alert(JSON.stringify(menu));
+                    lihtml = lihtml + '<li class="list-group-item"><a href="javascript:void(0);" onclick="navigator(this)"  data-id= "' + menu.ID + '" data-parentID="' + menu.ParentID + '">' +
+                        '<span class="label label-success"><i class="' + menu.iconName + '"></i></span>' +
+                        '<span style="white-space:nowrap;"  >' + menu.menuName + '</span>' +
+                        '</a>' +
+                        '<span class="badge">' + menu.id + '</span>' +
+                        '</li>';
+                });
+                $("#siderBar").append(lihtml);
+            }
+        });
+    }
+
+    $(function () {
+        $("#navigation").find(".active").find('a').trigger("click");
+        $.addtabs({
+            iframeHeight: 750,
+            iframeWidth: '100%',
+            iframescrolling: 'no'
+        });
+    });
+</script>
 </html>

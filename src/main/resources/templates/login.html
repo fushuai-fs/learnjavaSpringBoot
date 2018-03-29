@@ -48,7 +48,7 @@
                 $("#login").addClass("btn btn-large btn-primary").prop("disabled", true).text("登录中...");
             },
             success: function (data) {
-                alert(JSON.stringify(data));
+//                alert(JSON.stringify(data));
                 if (data.msg === "success") {
                     $("#login").text("登录成功,正在跳转...");
                     location.href = "/index";
