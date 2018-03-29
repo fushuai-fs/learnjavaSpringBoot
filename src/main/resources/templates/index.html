@@ -104,9 +104,9 @@
             if (status == "success") {
                 var lihtml = '';
                 $.each(data, function (index, menu) {
-//                    alert(JSON.stringify(menu));
-                    lihtml = lihtml + '<li class="list-group-item"><a href="javascript:void(0);" onclick="navigator(this)"  data-id= "' + menu.ID + '" data-parentID="' + menu.ParentID + '">' +
-                        '<span class="label label-success"><i class="' + menu.iconName + '"></i></span>' +
+//                     alert(JSON.stringify(menu));
+                    lihtml = lihtml + '<li class="list-group-item"><a href="javascript:void(0);" data-addtab="setting" data-url="'+menu.pageUrl+'" data-title="'+menu.menuName+'" data-id= "' + menu.ID + '" data-parentID="' + menu.ParentID + '">' +
+                        '<i class="' + menu.iconName + '"></i> ' +
                         '<span style="white-space:nowrap;"  >' + menu.menuName + '</span>' +
                         '</a>' +
                         '<span class="badge">' + menu.id + '</span>' +

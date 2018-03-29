@@ -249,13 +249,13 @@
             $.addtabs.drop();
         });
 
-        $('body').on('mouseover', 'li[role = "presentation"]', function () {
-            $(this).find('.close-tab').show();
-        });
-
-        $('body').on('mouseleave', 'li[role = "presentation"]', function () {
-            $(this).find('.close-tab').hide();
-        });
+        // $('body').on('mouseover', 'li[role = "presentation"]', function () {
+        //     $(this).find('.close-tab').show();
+        // });
+        //
+        // $('body').on('mouseleave', 'li[role = "presentation"]', function () {
+        //     $(this).find('.close-tab').hide();
+        // });
 
         if (settings.contextmenu) {
             //obj上禁用右键菜单

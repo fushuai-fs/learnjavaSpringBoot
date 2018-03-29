@@ -5,7 +5,7 @@
 
 .close-tab {
     font-size: 10px;
-    position:absolute;
+    position:absolute !important;
     right: 5px;
     top: 5px;
     padding-left: 25px;
