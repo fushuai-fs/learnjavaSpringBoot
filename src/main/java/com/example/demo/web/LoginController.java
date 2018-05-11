@@ -20,6 +20,8 @@ public class LoginController {
         //存session         redis存，redis客户端查乱码
         request.getSession().setAttribute("User", userName);
 
+
+
         Map<String,Object> map = new HashMap<>();
         map.put("msg","success");
         map.put("userName",userName);
